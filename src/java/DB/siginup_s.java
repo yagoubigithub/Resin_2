@@ -38,7 +38,7 @@ public class siginup_s extends HttpServlet {
                   request.getParameter("address"), request.getParameter("city"));
         try (PrintWriter out = response.getWriter()) {
           
-            
+           int x=0;
         }
     }
 
