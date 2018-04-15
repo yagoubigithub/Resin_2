@@ -6,7 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>siginup_s</servlet-name>
-        <servlet-class>DB.siginup_s</servlet-class>
+        <servlet-class>Form_p.siginup_s</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>create_session</servlet-name>
+        <servlet-class>Form_p.create_session</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>siginup_s</servlet-name>
         <url-pattern>/siginup_s</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>create_session</servlet-name>
+        <url-pattern>/create_session</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

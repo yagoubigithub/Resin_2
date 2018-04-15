@@ -21,7 +21,7 @@ function testInput() {
     } else {
         errors_span[0].style.color = "green";
         errors_span[0].innerHTML = "First Name valid";
-        b=true;
+        b = true;
     }
     /**********************************test Last Name*************************************************************/
     var lastname = Inputs[1].value;
@@ -33,7 +33,7 @@ function testInput() {
     } else {
         errors_span[1].style.color = "green";
         errors_span[1].innerHTML = "Last Name valid";
-        b=true;
+        b = true;
     }
     /***************************************************************************************************************/
 
@@ -46,7 +46,7 @@ function testInput() {
     } else {
         errors_span[2].style.color = "green";
         errors_span[2].innerHTML = "Email valid";
-        b=true;
+        b = true;
     }
     /************************************test password****************************************************************/
     var password = Inputs[3].value;
@@ -58,7 +58,7 @@ function testInput() {
     } else {
         errors_span[3].style.color = "green";
         errors_span[3].innerHTML = "password valid";
-        b=true;
+        b = true;
     }
     /*********************************************************************************************/
 
@@ -66,11 +66,11 @@ function testInput() {
     if (confirmPassword === password && confirmPassword !== "") {
         errors_span[4].style.color = "green";
         errors_span[4].innerHTML = "password confirmation  valid";
-        b=true;
+        b = true;
     } else {
         errors_span[4].style.color = "red";
         errors_span[4].innerHTML = "Errors in the confirmation";
-        b=false;
+        b = false;
     }
     /********************************************************************************************/
     var address = Inputs[5].value;
@@ -78,47 +78,57 @@ function testInput() {
     if (!patt.test(address)) {
         errors_span[5].style.color = "red";
         errors_span[5].innerHTML = "Streeet address not valid";
-        b=false;
+        b = false;
     } else {
         errors_span[5].style.color = "green";
         errors_span[5].innerHTML = "street address valid";
-        b=true;
+        b = true;
     }
     /********************************************************************************************************/
     var city = Inputs[6].value;
     if (city === "") {
         errors_span[6].style.color = "red";
         errors_span[6].innerHTML = "select a city";
-        b=false;
+        b = false;
     } else {
         errors_span[6].style.color = "green";
         errors_span[6].innerHTML = "";
-        b=true;
+        b = true;
     }
     return b;
 }
 
-$("#submit_signup").click(function(){
-    b=testInput();
-    if(b){
-        var firstname=$("#firstname").val();
-        var lastname=$("#lastname").val();
-         var email = $("#email").val();
+$("#submit_signup").click(function () {
+    b = testInput();
+    if (b) {
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var email = $("#email").val();
         var password = $("#password").val();
-        
-        var address =$("#address").val();
-        var city =$("#city").val();
-      
-        $.post('siginup_s', {firstname:firstname,lastname:lastname
-            ,email: email, password: password,address:address,city:city},
+        var address = $("#address").val();
+        var city = $("#city").val();
+
+        $.post('siginup_s', {firstname: firstname, lastname: lastname
+            , email: email, password: password, address: address, city: city},
                 function (data) {
-                    r=data;
-                    if(r === "Auth_error"){
-                      $(".error_in").html("The email or the password is not correct");
-                    }else{
-                       
-                        alert(r);
-                    }
+
+                  
+                        obj = $.parseJSON(data);
+                        if (obj.firstname === "exist") {
+                            document.getElementsByClassName("error")[2].innerHTML = "this email is already exist";
+                            document.getElementsByClassName("error")[2].style.color = "red";
+                        } else {
+                            
+                             $.post('create_session', {id:obj.id,firstname:obj.firstname,
+                                lastname:obj.lastname, email: obj.email, password: obj.password,
+                                address: obj.address, city_id: obj.city_id},
+                function (data) {
+                    window.location.href = './Accueil/display.jsp';
+                    alert(data);
+                });
+                        }
+
+                    
                 });
     }
 });

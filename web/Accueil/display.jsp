@@ -8,6 +8,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+      String firstname=  session.getAttribute("firstname").toString();
+      out.println("<h1>welcom in display"+firstname);
         
+        %>
     </body>
 </html>

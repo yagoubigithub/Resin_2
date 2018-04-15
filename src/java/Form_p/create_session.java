@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DB;
+package Form_p;
 
-import Agent.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
  * @author Yagoubi
  */
-public class siginup_s extends HttpServlet {
+public class create_session extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,14 +32,30 @@ public class siginup_s extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        DB.DBConnect db=new DBConnect();
-          User user =db.SignUp(request.getParameter("firstname"), request.getParameter("lastname")
-                  , request.getParameter("email"), request.getParameter("password"),
-                  request.getParameter("address"), request.getParameter("city"));
         try (PrintWriter out = response.getWriter()) {
-          
-           int x=0;
+            /* TODO output your page here. You may use following sample code. */
+            String id=request.getParameter("id");
+            String firstname=request.getParameter("firstname");
+            String lastname=request.getParameter("lastname");
+            String email=request.getParameter("email");
+            String password=request.getParameter("password");
+            String address=request.getParameter("address");
+            String city_id=request.getParameter("city_id");
+           
+            //create session
+            HttpSession session = request.getSession();
+            
+             session.setAttribute("user_id", id);
+             session.setAttribute("firstname", firstname);
+             session.setAttribute("lastname", lastname);
+             session.setAttribute("email", email);
+             session.setAttribute("password", password);
+             session.setAttribute("address", address);
+             session.setAttribute("city_id", city_id);
+              out.println(session.getAttribute("firstname"));
+                
+        
+            
         }
     }
 
