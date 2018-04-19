@@ -11,37 +11,37 @@
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name*" >
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row ">
                             <div class="col">
                                 <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name*">
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <input type="email"class="form-control" id="email" name="email" placeholder="Email*">
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <input type="password" class="form-control" id="password" name="password"placeholder="Password*">
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password*">
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row ">
                             <div class="col">
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Address*" >
-                                <span class="error">Blala</span>
+                                <span class="error">error_description</span>
                             </div>
                         </div>
                         <div class="row">
