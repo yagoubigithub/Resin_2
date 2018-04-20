@@ -23,7 +23,7 @@ $(document).ready(function () {
                                 address: obj.address, city_id: obj.city_id},
                 function (data) {
                     window.location.href = './Accueil/display.jsp';
-                    alert(data);
+                   
                 });
                     }
                 });

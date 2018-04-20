@@ -28,7 +28,7 @@
             String city = "";
             String address = "";
             try {
-                city = session.getAttribute("city").toString();
+                city = session.getAttribute("city_id").toString();
                 firstname = session.getAttribute("firstname").toString();
                 address = session.getAttribute("address").toString();
             } catch (Exception e) {
@@ -70,9 +70,9 @@
                     </div>
                 </div>
                 <div class="identity text-white">
-                    <form action="display.jsp">
-                        <button class="btn btn-outline-success ml-5" type="button" name="logout">Log Out</button>
-                    </form>
+                    
+                        <button class="btn btn-outline-success ml-5" type="button" id="logout">Log Out</button>
+                    
 
                 </div>
             </div>
@@ -114,5 +114,6 @@
         <script src="../js/jquery.min.js"></script>
         <script src="../js/tether.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/validation/logout.js"></script>
     </body>
 </html>

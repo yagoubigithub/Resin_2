@@ -32,9 +32,24 @@ public class create_session extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       HttpSession session = request.getSession();
             /* TODO output your page here. You may use following sample code. */
-            String id=request.getParameter("id");
+           String logout=null;
+            try {
+           logout=request.getParameter("logout");
+
+        } catch (Exception e) {
+        }
+            if( logout != null ){
+                 session.removeAttribute("user_id");
+             session.removeAttribute("firstname");
+             session.removeAttribute("lastname");
+             session.removeAttribute("email");
+             session.removeAttribute("password");
+             session.removeAttribute("address");
+             session.removeAttribute("city_id"); 
+            }else{
+               String id=request.getParameter("id");
             String firstname=request.getParameter("firstname");
             String lastname=request.getParameter("lastname");
             String email=request.getParameter("email");
@@ -43,7 +58,7 @@ public class create_session extends HttpServlet {
             String city_id=request.getParameter("city_id");
            
             //create session
-            HttpSession session = request.getSession();
+            
             
              session.setAttribute("user_id", id);
              session.setAttribute("firstname", firstname);
@@ -51,12 +66,14 @@ public class create_session extends HttpServlet {
              session.setAttribute("email", email);
              session.setAttribute("password", password);
              session.setAttribute("address", address);
-             session.setAttribute("city_id", city_id);
-              out.println(session.getAttribute("firstname"));
+             session.setAttribute("city_id", city_id); 
+            }
+            
+             
                 
         
             
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -27,7 +27,7 @@
                                             <label>Email*</label>
                                         </div>
                                         <div class="col-12">
-                                            <input type="email"class="form-control" id="email_signin" placeholder="Email*">
+                                            <input type="email"class="form-control" id="email_signin" placeholder="Email*" value="yagoubi.aek.2@gmail.com">
                                             <br>
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                                             <label>Password*</label>
                                         </div>
                                         <div class="col-12">
-                                            <input type="password" class="form-control" id="password_signin" placeholder="Password*">
+                                            <input type="password" class="form-control" id="password_signin" placeholder="Password*" value="abdou">
                                             <br>
                                         </div>
                                     </div>
