@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>Test.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>siginup_s</servlet-name>
+        <servlet-class>Form_p.siginup_s</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>create_session</servlet-name>
+        <servlet-class>Form_p.create_session</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>siginup_s</servlet-name>
+        <url-pattern>/siginup_s</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>create_session</servlet-name>
+        <url-pattern>/create_session</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

@@ -17,8 +17,14 @@ $(document).ready(function () {
                     if(r === "Auth_error"){
                       $(".error_in").html("the email or the password is not correct");
                     }else{
-                       
-                        alert(r);
+                        obj = $.parseJSON(r);
+                            $.post('create_session', {id:obj.id,firstname:obj.firstname,
+                                lastname:obj.lastname, email: obj.email, password: obj.password,
+                                address: obj.address, city_id: obj.city_id},
+                function (data) {
+                    window.location.href = './Accueil/display.jsp';
+                    alert(data);
+                });
                     }
                 });
     });
