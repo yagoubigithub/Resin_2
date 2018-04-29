@@ -8,6 +8,7 @@ package Form_p;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -67,6 +68,14 @@ public class create_session extends HttpServlet {
              session.setAttribute("password", password);
              session.setAttribute("address", address);
              session.setAttribute("city_id", city_id); 
+              if (request.getParameter("rememberMe").equals("true")) {
+                    Cookie emailCookie = new Cookie("email.resin.signin", email);
+                    Cookie passwordCookie = new Cookie("password.resin.signin", password);
+                    emailCookie.setMaxAge(60 * 60 * 24 * 30);
+                    passwordCookie.setMaxAge(60 * 60 * 24 * 30);
+                    response.addCookie(emailCookie);
+                    response.addCookie(passwordCookie);
+                }
             }
             
              

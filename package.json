@@ -1,0 +1,25 @@
+{
+  "name": "resin_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.jsp",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yagoubigithub/Resin_2.git"
+  },
+  "author": "yagoubi aek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yagoubigithub/Resin_2/issues"
+  },
+  "homepage": "https://github.com/yagoubigithub/Resin_2#readme",
+  "dependencies": {
+    "rythm.js": "^2.2.3"
+  }
+}

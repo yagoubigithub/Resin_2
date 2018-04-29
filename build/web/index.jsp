@@ -17,11 +17,14 @@
     <body>
         <%@include file="Navs/index_nav.jsp" %>
         <%@include file="Models/signup_signin_model.jsp" %>
+        <br><br><br><br>
+        <h1 class="rythm-bass">Yagoubi</h1>
          <script src="js/jquery.min.js"></script>
         <script src="js/tether.min.js"></script>
         <script src="js\bootstrap.min.js"></script>
         <script src="js/controle_model/model_signin_signup.js"></script>
         <script src="js/validation/test_validation_signup.js"></script>
         <script src="js/validation/test_validation_signin.js"></script>
+        
     </body>
 </html>

@@ -48,7 +48,7 @@
                         <li class="nav-item "><a href="#" class="nav-link"><span class="fa fa-home fa-lg"></span> Catalogue</a></li>
                         <li class="nav-item active"><a href="#" class="nav-link"><span class="fa fa-info fa-lg"></span> Accueil</a></li>
 
-                        <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-address-card fa-lg"></span> My Profil</a></li>
+                        <li class="nav-item"><a href="../Profil/myProfil.jsp" class="nav-link"><span class="fa fa-address-card fa-lg"></span> My Profil</a></li>
 
                     </ul>
                 </div>
@@ -57,7 +57,7 @@
                         <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             All
                         </button>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" id="menu-categorie">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
@@ -115,5 +115,6 @@
         <script src="../js/tether.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/validation/logout.js"></script>
+        <script src="../js/fechBD/fetch_categorie.js"></script>
     </body>
 </html>

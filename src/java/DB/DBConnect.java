@@ -34,6 +34,8 @@ public class DBConnect {
             System.err.println("Error :" + e.getMessage());
         }
     }
+    
+    
 
     public User Auth(String email, String password) {
         User user = null;
@@ -53,7 +55,7 @@ public class DBConnect {
     public int SelectCityId(String cityname) {
         int id = 0;
         try {
-            rs = excuteSelect("SELECT id WHERE nom='" + cityname + "'");
+            rs = excuteSelect("SELECT id FROM citys WHERE nom='" + cityname + "'");
             while (rs.next()) {
                 id = rs.getInt("id");
             }
@@ -111,6 +113,23 @@ boolean b=true;
 
     public void excuteDml(String dml) throws SQLException {
         st.executeUpdate(dml);
+    }
+    
+    
+    
+    public ArrayList<String> SelectCategorie(){
+         ArrayList<String> array=new ArrayList<>();
+        try {
+            rs = excuteSelect("SELECT DISTINCT categorie FROM article");
+            while (rs.next()) {
+                String categorie = rs.getString("categorie");
+                array.add(categorie);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return array;
     }
 
     public void close() {

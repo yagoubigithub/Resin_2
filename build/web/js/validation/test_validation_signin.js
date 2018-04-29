@@ -10,21 +10,27 @@ $(document).ready(function () {
     $("#submit_signin").click(function () {
         var email = $("#email_signin").val();
         var password = $("#password_signin").val();
-      
+
         $.post('siginin_s', {email: email, password: password},
                 function (data) {
-                    r=data;
-                    if(r === "Auth_error"){
-                      $(".error_in").html("the email or the password is not correct");
-                    }else{
+                    r = data;
+                    if (r === "Auth_error") {
+                        $(".error_in").html("the email or the password is not correct");
+                    } else {
+                        var checkox_remember_me = $("#rememberMe");
+                        var creat_cookies="true";
+                        if(!document.getElementById("rememberMe").checked){
+                            creat_cookies="false";
+                        }
+
                         obj = $.parseJSON(r);
-                            $.post('create_session', {id:obj.id,firstname:obj.firstname,
-                                lastname:obj.lastname, email: obj.email, password: obj.password,
-                                address: obj.address, city_id: obj.city_id},
-                function (data) {
-                    window.location.href = './Accueil/display.jsp';
-                   
-                });
+                        $.post('create_session', {id: obj.id, firstname: obj.firstname,
+                            lastname: obj.lastname, email: obj.email, password: obj.password,
+                            address: obj.address, city_id: obj.city_id,rememberMe:creat_cookies},
+                                function (data) {
+                                    window.location.href = './Accueil/display.jsp';
+
+                                });
                     }
                 });
     });

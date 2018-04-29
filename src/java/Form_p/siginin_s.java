@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Agent.User;
+import javax.servlet.http.Cookie;
+
 /**
  *
  * @author Yagoubi
@@ -34,23 +36,25 @@ public class siginin_s extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DB.DBConnect db=new DBConnect();
-       
+        DB.DBConnect db = new DBConnect();
+
         try (PrintWriter out = response.getWriter()) {
-           User user= db.Auth(request.getParameter("email"), request.getParameter("password"));
-           if(user == null){
-               out.print("Auth_error");
-           }else{
-               out.println("{");
-               out.println("\"id\" : "+user.getId()+",");
-               out.println("\"firstname\" : \""+user.getFirstname()+"\",");
-               out.println("\"lastname\" : \""+user.getLastname()+"\",");
-               out.println("\"email\" : \""+user.getEmail()+"\",");
-               out.println("\"password\" : \""+user.getPassword()+"\",");
-               out.println("\"address\" : \""+user.getAddress()+"\",");
-               out.println("\"city_id\" : "+user.getCity_id());
-               out.println("}");
-           }
+            User user = db.Auth(request.getParameter("email"), request.getParameter("password"));
+            if (user == null) {
+                out.print("Auth_error");
+            } else {
+                out.println("{");
+                out.println("\"id\" : " + user.getId() + ",");
+                out.println("\"firstname\" : \"" + user.getFirstname() + "\",");
+                out.println("\"lastname\" : \"" + user.getLastname() + "\",");
+                out.println("\"email\" : \"" + user.getEmail() + "\",");
+                out.println("\"password\" : \"" + user.getPassword() + "\",");
+                out.println("\"address\" : \"" + user.getAddress() + "\",");
+                out.println("\"city_id\" : " + user.getCity_id());
+                out.println("}");
+               
+
+            }
         }
     }
 
