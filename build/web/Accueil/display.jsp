@@ -58,10 +58,7 @@
                             All
                         </button>
                         <div class="dropdown-menu" id="menu-categorie">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                           ..........
                         </div>
                     </div>
                     <input type="text" class="form-control" aria-label="Text input with dropdown button">

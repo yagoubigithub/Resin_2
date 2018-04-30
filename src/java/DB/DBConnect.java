@@ -5,6 +5,7 @@
  */
 package DB;
 
+import Agent.Publication;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -34,8 +35,6 @@ public class DBConnect {
             System.err.println("Error :" + e.getMessage());
         }
     }
-    
-    
 
     public User Auth(String email, String password) {
         User user = null;
@@ -67,8 +66,8 @@ public class DBConnect {
     }
 
     public boolean isEmailExist(String email) {
-User user = null;
-boolean b=true;
+        User user = null;
+        boolean b = true;
         try {
             rs = st.executeQuery("SELECT * FROM `user` WHERE email='" + email + "'");
 
@@ -85,18 +84,18 @@ boolean b=true;
 
     public User SignUp(String firstname, String lastname, String email, String password, String address, String city) {
         User user;
-        if(isEmailExist(email)){
+        if (isEmailExist(email)) {
             return new User(0, "exist", "exist", "exist", "exist", "exist", 0);
-        }else{
-            user=null;
+        } else {
+            user = null;
         }
         int cityId = SelectCityId(city);
         try {
             excuteDml("INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`, `address`, `city_id`) "
-                    + "VALUES ('"+firstname+"','"+lastname+"','"+email+"','"+password+"','"+address+"',"+cityId+")");
+                    + "VALUES ('" + firstname + "','" + lastname + "','" + email + "','" + password + "','" + address + "'," + cityId + ")");
             rs = excuteSelect("SELECT * FROM `user` WHERE firstname='" + firstname + "' AND lastname='" + lastname + "'"
                     + " AND email='" + email + "' AND password='" + password + "' "
-                    + "AND address='" + address + "' AND city_id="+cityId);
+                    + "AND address='" + address + "' AND city_id=" + cityId);
             while (rs.next()) {
                 user = new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
                         rs.getString("email"), rs.getString("password"), rs.getString("address"), rs.getInt("city_id"));
@@ -114,11 +113,9 @@ boolean b=true;
     public void excuteDml(String dml) throws SQLException {
         st.executeUpdate(dml);
     }
-    
-    
-    
-    public ArrayList<String> SelectCategorie(){
-         ArrayList<String> array=new ArrayList<>();
+
+    public ArrayList<String> SelectCategorie() {
+        ArrayList<String> array = new ArrayList<>();
         try {
             rs = excuteSelect("SELECT DISTINCT categorie FROM article");
             while (rs.next()) {
@@ -140,4 +137,44 @@ boolean b=true;
             throw new SecurityException();
         }
     }
+
+    public Agent.Publication SelectPublication(int id_user) {
+        Agent.Publication publication = null;
+       
+        
+        try {
+            rs = st.executeQuery("SELECT * \n"
+                    + "FROM publication p\n"
+                    + "JOIN user u\n"
+                    + "ON u.id=p.user_id AND u.id="+id_user+"\n"
+                    + "JOIN article a \n"
+                    + "ON a.id=p.article_id");
+
+            while (rs.next()) {
+               String city= this.SelectCityName(rs.getInt("city_id"));
+                publication=new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString("description"),
+                        rs.getString("firstname"), rs.getString("lastname"), city,
+                        rs.getString("nom"),rs.getString("categorie"), rs.getString("color"), 
+                        rs.getString("taille"), rs.getDouble("prix"), rs.getDouble("promo"), rs.getString("image"));
+            }
+        } catch (SQLException ex) {
+            publication=null;
+        }
+        return publication;
+
+    }
+    public String SelectCityName(int id){
+       String nom="";
+        try {
+            rs = excuteSelect("SELECT nom FROM citys WHERE id=" + id  );
+            while (rs.next()) {
+                nom = rs.getString("nom");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nom; 
+    }
+
 }
