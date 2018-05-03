@@ -39,4 +39,109 @@ public class Publication {
         this.image = image;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setNom_article(String nom_article) {
+        this.nom_article = nom_article;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setTaille(String taille) {
+        this.taille = taille;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public void setPromo(double promo) {
+        this.promo = promo;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getNom_article() {
+        return nom_article;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getTaille() {
+        return taille;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public double getPromo() {
+        return promo;
+    }
+
+    public String getImage() {
+        return image;
+    }
+    
+
 }

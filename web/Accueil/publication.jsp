@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <img src="../images/avatar2.png" width="50" height="50"class="rounded-circle float-left user_image_pub">
-                                        <h6 class="user_name_pub"> <%=firstname%> </h6> 
+                                        <h6 class="user_name_pub">hello </h6> 
                                     </div>
 
                                 </div>

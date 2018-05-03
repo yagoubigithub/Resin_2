@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import Agent.User;
+import Agent.*;
+import java.sql.Date;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -138,43 +140,51 @@ public class DBConnect {
         }
     }
 
-    public Agent.Publication SelectPublication(int id_user) {
-        Agent.Publication publication = null;
-       
-        
+    public Agent.Publication SelectPublication() {
+        Publication publication = null;
+        String city = "";
         try {
-            rs = st.executeQuery("SELECT * \n"
-                    + "FROM publication p\n"
-                    + "JOIN user u\n"
-                    + "ON u.id=p.user_id AND u.id="+id_user+"\n"
+            rs = excuteSelect("SELECT p.id,p.date AS date ,p.description,\n"
+                    + "u.firstname,u.lastname,u.address,u.city_id,\n"
+                    + "a.nom,a.categorie,a.color,a.taille,a.prix,a.promo,a.image\n"
+                    + "FROM publication p \n"
+                    + "JOIN user u \n"
+                    + "ON u.id= p.user_id \n"
                     + "JOIN article a \n"
-                    + "ON a.id=p.article_id");
-
+                    + "ON a.id=p.article_id \n"
+                    + "ORDER BY p.date DESC \n"
+                    + "LIMIT 1");
+            Date d = new Date(1999, 5, 10);
             while (rs.next()) {
-               String city= this.SelectCityName(rs.getInt("city_id"));
-                publication=new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString("description"),
-                        rs.getString("firstname"), rs.getString("lastname"), city,
-                        rs.getString("nom"),rs.getString("categorie"), rs.getString("color"), 
+                publication = new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString(2),
+                        rs.getString("firstname"), rs.getString("lastname"), "",
+                        rs.getString("nom"), rs.getString("categorie"), rs.getString("color"),
                         rs.getString("taille"), rs.getDouble("prix"), rs.getDouble("promo"), rs.getString("image"));
+                city = this.SelectCityName(rs.getInt("city_id"));
+
             }
         } catch (SQLException ex) {
-            publication=null;
+            Date d = new Date(1999, 5, 10);
+            publication = new Publication(0, d, ex.getMessage(), ex.getMessage(), ex.getMessage(), ex.getMessage(),
+                    ex.getMessage(), ex.getMessage(), ex.getMessage(), ex.getMessage(), 0, 0, ex.getMessage());
+            System.out.println();
         }
+        publication.setCity(city);
         return publication;
 
     }
-    public String SelectCityName(int id){
-       String nom="";
+
+    public String SelectCityName(int id) {
+        String nom = "";
         try {
-            rs = excuteSelect("SELECT nom FROM citys WHERE id=" + id  );
+            rs = excuteSelect("SELECT nom FROM citys WHERE id=" + id);
             while (rs.next()) {
                 nom = rs.getString("nom");
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(DBConnect.class.getName()).log(Level.SEVERE, null, ex);
+            nom = ex.getMessage();
         }
-        return nom; 
+        return nom;
     }
-
 }

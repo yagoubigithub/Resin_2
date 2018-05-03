@@ -35,7 +35,29 @@ public class fetchPublication extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            DB.DBConnect db=new DBConnect();
-          
+           
+         Agent.Publication publication= db.SelectPublication();
+         if(publication != null){
+              out.println("{");
+              
+         out.println("\"id\" : " + publication.getId() +",");
+         out.println("\"date\" : \"" + publication.getDate() +"\",");
+         out.println("\"description\" : \"" + publication.getDescription()+"\",");
+         out.println("\"firstname\" : \"" + publication.getFirstname() +"\",");
+         out.println("\"lastname\" : \"" + publication.getLastname() +"\",");
+         out.println("\"nom_article\" : \"" + publication.getNom_article() +"\",");
+         out.println("\"categorie\" : \"" + publication.getCategorie() +"\",");
+         out.println("\"color\" : \"" + publication.getColor() +"\",");
+         out.println("\"taille\" : \"" + publication.getTaille() +"\" ,");
+          out.println("\"prix\" : " + publication.getPrix() +" ,");
+           out.println("\"promo\" : " + publication.getPromo()+" ,");
+            out.println("\"image\" : \"" + publication.getImage() +"\"");
+         out.println("}");
+         
+         }else{
+             out.print("publication is null");
+         }
+        
             
             
         }
