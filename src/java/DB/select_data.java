@@ -37,13 +37,17 @@ public class select_data extends HttpServlet {
            String fetch=request.getParameter("fetch");
            if(fetch.equals("categorie")){
               ArrayList<String> caigories= db.SelectCategorie();
+              out.println("[");
                for (int i = 0; i < caigories.size(); i++) {
                    String get = caigories.get(i);
                    out.println("{");
                    out.println("\"categorie\" :\""+get+"\"");
                     out.println("}");
-                   
+                   if(i < caigories.size() -1){
+                       out.print(",");
+                   }
                }
+               out.println("]");
            }
         }
     }
