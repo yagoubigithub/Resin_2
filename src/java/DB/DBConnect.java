@@ -140,51 +140,5 @@ public class DBConnect {
         }
     }
 
-    public Agent.Publication SelectPublication() {
-        Publication publication = null;
-        String city = "";
-        try {
-            rs = excuteSelect("SELECT p.id,p.date AS date ,p.description,\n"
-                    + "u.firstname,u.lastname,u.address,u.city_id,\n"
-                    + "a.nom,a.categorie,a.color,a.taille,a.prix,a.promo,a.image\n"
-                    + "FROM publication p \n"
-                    + "JOIN user u \n"
-                    + "ON u.id= p.user_id \n"
-                    + "JOIN article a \n"
-                    + "ON a.id=p.article_id \n"
-                    + "ORDER BY p.date DESC \n"
-                    + "LIMIT 1");
-            Date d = new Date(1999, 5, 10);
-            while (rs.next()) {
-                publication = new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString(2),
-                        rs.getString("firstname"), rs.getString("lastname"), "",
-                        rs.getString("nom"), rs.getString("categorie"), rs.getString("color"),
-                        rs.getString("taille"), rs.getDouble("prix"), rs.getDouble("promo"), rs.getString("image"));
-                city = this.SelectCityName(rs.getInt("city_id"));
-
-            }
-        } catch (SQLException ex) {
-            Date d = new Date(1999, 5, 10);
-            publication = new Publication(0, d, ex.getMessage(), ex.getMessage(), ex.getMessage(), ex.getMessage(),
-                    ex.getMessage(), ex.getMessage(), ex.getMessage(), ex.getMessage(), 0, 0, ex.getMessage());
-            System.out.println();
-        }
-        publication.setCity(city);
-        return publication;
-
-    }
-
-    public String SelectCityName(int id) {
-        String nom = "";
-        try {
-            rs = excuteSelect("SELECT nom FROM citys WHERE id=" + id);
-            while (rs.next()) {
-                nom = rs.getString("nom");
-            }
-
-        } catch (SQLException ex) {
-            nom = ex.getMessage();
-        }
-        return nom;
-    }
+   
 }
