@@ -18,14 +18,17 @@
                                 <div class="row">
                                     <div class="col">
                                         <img src="../images/avatar2.png" width="50" height="50"class="rounded-circle float-left user_image_pub">
-                                        <h6 class="user_name_pub">hello </h6> 
+                                        <h6 class="user_name_pub">yagoubi aek </h6> 
                                     </div>
 
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <strong><p>Prix : <mark>7220 DA</mark></p></strong>
+                                        <p>Tel.: 0699823913</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tem
+                                            uat.</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -35,19 +38,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <script>
-                                            function loadDoc() {
-                                            var xhttp = new XMLHttpRequest();
-                                            xhttp.onreadystatechange = function () {
-                                                if (this.readyState == 4 && this.status == 200) {
-                                                    alert(this.responseText);
-                                                }
-                                            };
-                                            xhttp.open("GET", "test.jsp", true);
-                                            xhttp.send();
-                                        }
-                                        </script>
-                                        <button type="button" class="btn" onclick="loadDoc()"><i class="fa fa-thumbs-up"></i> Like</button>
+                                       
+                                        <button type="button" class="btn"><i class="fa fa-thumbs-up"></i> Like</button>
                                         
                                         <button type="button" class="btn"><i class="fa fa-comment"></i> Comment</button>
                                     </div>

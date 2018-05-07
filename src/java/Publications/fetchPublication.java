@@ -40,20 +40,21 @@ public class fetchPublication extends HttpServlet {
            DB.PUBLICATION_DB db = new PUBLICATION_DB();
             ArrayList<Publication> publications = db.SelectPublication();
             if (publications != null) {
-               out.println("{");
+               out.println("[");
                 for (int i = 0; i < publications.size(); i++) {
                     Publication publication = publications.get(i);
                     if(publication != null){
-                        out.println("\""+i+"\":{");
+                        out.println("{");
                     out.println("\"id\" : " + publication.getId() + ",");
                     out.println("\"date\" : \"" + publication.getDate() + "\",");
-                    out.println("\"description\" : \"" + publication.getDescription() + "\",");
+                    
                     out.println("\"firstname\" : \"" + publication.getFirstname() + "\",");
                     out.println("\"lastname\" : \"" + publication.getLastname() + "\",");
                     out.println("\"nom_article\" : \"" + publication.getNom_article() + "\",");
                     out.println("\"categorie\" : \"" + publication.getCategorie() + "\",");
                     out.println("\"color\" : \"" + publication.getColor() + "\",");
                     out.println("\"taille\" : \"" + publication.getTaille() + "\" ,");
+                    out.println("\"description\" : \"" + publication.getDescription() + "\",");
                     out.println("\"prix\" : " + publication.getPrix() + " ,");
                     out.println("\"promo\" : " + publication.getPromo() + " ,");
                     out.println("\"image\" : \"" + publication.getImage() + "\"");
@@ -64,7 +65,7 @@ public class fetchPublication extends HttpServlet {
                     }
                      
                 }
-                 out.println("}");
+                 out.println("]");
 
             } else {
                 out.print("publications is null");

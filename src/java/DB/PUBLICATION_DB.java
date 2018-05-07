@@ -35,21 +35,23 @@ public class PUBLICATION_DB {
     }
      public ArrayList<Publication> SelectPublication() {
          ArrayList<Publication> array=new ArrayList<>();
-        
+        int a=10;
        
         try {
-            rs = st.executeQuery("SELECT p.id,p.date AS date ,p.description,\n"
+            rs = st.executeQuery("SELECT p.id,p.date AS date ,p.description AS description,\n"
                     + "u.firstname,u.lastname,u.address,u.city_id,\n"
                     + "a.nom,a.categorie,a.color,a.taille,a.prix,a.promo,a.image\n"
                     + "FROM publication p \n"
                     + "JOIN user u \n"
                     + "ON u.id= p.user_id \n"
                     + "JOIN article a \n"
-                    + "ON a.id=p.article_id \n"
+                    + "ON a.id=p.article_id\n"
+                    + "ORDER BY 2  DESC\n"
+                    + "\n"
                    );
             
             while (rs.next()) {
-             Publication   publication = new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString(2),
+             Publication   publication = new Publication(rs.getInt("id"), rs.getDate("date"), rs.getString("description"),
                         rs.getString("firstname"), rs.getString("lastname"), "",
                         rs.getString("nom"), rs.getString("categorie"), rs.getString("color"),
                         rs.getString("taille"), rs.getDouble("prix"), rs.getDouble("promo"), rs.getString("image"));

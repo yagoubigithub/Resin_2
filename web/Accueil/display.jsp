@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm">
+                            <div class="col-sm" id="publication">
                         <%@include  file="publication.jsp" %>
                         <br>
                         <%@include  file="publication.jsp" %>
@@ -113,5 +113,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/validation/logout.js"></script>
         <script src="../js/fechBD/fetch_categorie.js"></script>
+        <script src="../js/fechBD/fetch_publication.js"></script>
     </body>
 </html>
