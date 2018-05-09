@@ -45,7 +45,7 @@ public class DBConnect {
 
             while (rs.next()) {
                 user = new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
-                        rs.getString("email"), rs.getString("password"), rs.getString("address"), rs.getInt("city_id"));
+                        rs.getString("email"), rs.getString("password"), rs.getString("tel"), rs.getInt("city_id"));
             }
         } catch (SQLException ex) {
             user = null;
@@ -75,7 +75,7 @@ public class DBConnect {
 
             while (rs.next()) {
                 user = new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
-                        rs.getString("email"), rs.getString("password"), rs.getString("address"), rs.getInt("city_id"));
+                        rs.getString("email"), rs.getString("password"), rs.getString("tel"), rs.getInt("city_id"));
             }
         } catch (SQLException ex) {
             user = null;
@@ -84,7 +84,7 @@ public class DBConnect {
         return b;
     }
 
-    public User SignUp(String firstname, String lastname, String email, String password, String address, String city) {
+    public User SignUp(String firstname, String lastname, String email, String password, String tel, String city) {
         User user;
         if (isEmailExist(email)) {
             return new User(0, "exist", "exist", "exist", "exist", "exist", 0);
@@ -93,14 +93,14 @@ public class DBConnect {
         }
         int cityId = SelectCityId(city);
         try {
-            excuteDml("INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`, `address`, `city_id`) "
-                    + "VALUES ('" + firstname + "','" + lastname + "','" + email + "','" + password + "','" + address + "'," + cityId + ")");
+            excuteDml("INSERT INTO `user`(`firstname`, `lastname`, `email`, `password`, `tel`, `city_id`) "
+                    + "VALUES ('" + firstname + "','" + lastname + "','" + email + "','" + password + "','" + tel + "'," + cityId + ")");
             rs = excuteSelect("SELECT * FROM `user` WHERE firstname='" + firstname + "' AND lastname='" + lastname + "'"
                     + " AND email='" + email + "' AND password='" + password + "' "
-                    + "AND address='" + address + "' AND city_id=" + cityId);
+                    + "AND tel='" + tel + "' AND city_id=" + cityId);
             while (rs.next()) {
                 user = new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
-                        rs.getString("email"), rs.getString("password"), rs.getString("address"), rs.getInt("city_id"));
+                        rs.getString("email"), rs.getString("password"), rs.getString("tel"), rs.getInt("city_id"));
             }
         } catch (SQLException ex) {
             user = null;

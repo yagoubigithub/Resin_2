@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col">
                                        
-                                        <button type="button" class="btn"><i class="fa fa-thumbs-up"></i> Like</button>
+                                        <button type="button" class="btn" id="16" onclick="sendLike(this.id)"><i class="fa fa-thumbs-up"></i> Like</button>
                                         
                                         <button type="button" class="btn"><i class="fa fa-comment"></i> Comment</button>
                                     </div>

@@ -57,7 +57,8 @@ public class fetchPublication extends HttpServlet {
                     out.println("\"description\" : \"" + publication.getDescription() + "\",");
                     out.println("\"prix\" : " + publication.getPrix() + " ,");
                     out.println("\"promo\" : " + publication.getPromo() + " ,");
-                    out.println("\"image\" : \"" + publication.getImage() + "\"");
+                    out.println("\"image\" : \"" + publication.getImage() + "\",");
+                     out.println("\"tel\" : \"" + publication.getTel() + "\"");
                     out.println("}");
                     if(i < publications.size()-1){
                         out.print(",");

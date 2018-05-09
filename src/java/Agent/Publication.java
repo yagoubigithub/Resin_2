@@ -22,8 +22,14 @@ public class Publication {
     private double prix;
     private double promo;
     private String image;
+             private String tel
+            ;
 
-    public Publication(int id, Date date, String description, String firstname, String lastname, String city, String nom_article, String categorie, String color, String taille, double prix, double promo, String image) {
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public Publication(int id, Date date, String description, String firstname, String lastname, String city, String nom_article, String categorie, String color, String taille, double prix, double promo, String image,String tel) {
         this.id = id;
         this.date = date;
         this.description = description;
@@ -37,6 +43,11 @@ public class Publication {
         this.prix = prix;
         this.promo = promo;
         this.image = image;
+        this.tel=tel;
+    }
+
+    public String getTel() {
+        return tel;
     }
 
     public void setId(int id) {

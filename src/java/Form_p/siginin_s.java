@@ -49,7 +49,7 @@ public class siginin_s extends HttpServlet {
                 out.println("\"lastname\" : \"" + user.getLastname() + "\",");
                 out.println("\"email\" : \"" + user.getEmail() + "\",");
                 out.println("\"password\" : \"" + user.getPassword() + "\",");
-                out.println("\"address\" : \"" + user.getAddress() + "\",");
+                out.println("\"tel\" : \"" + user.getTel() + "\",");
                 out.println("\"city_id\" : " + user.getCity_id());
                 out.println("}");
                

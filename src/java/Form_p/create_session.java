@@ -47,7 +47,7 @@ public class create_session extends HttpServlet {
              session.removeAttribute("lastname");
              session.removeAttribute("email");
              session.removeAttribute("password");
-             session.removeAttribute("address");
+             session.removeAttribute("tel");
              session.removeAttribute("city_id"); 
             }else{
                String id=request.getParameter("id");
@@ -55,7 +55,7 @@ public class create_session extends HttpServlet {
             String lastname=request.getParameter("lastname");
             String email=request.getParameter("email");
             String password=request.getParameter("password");
-            String address=request.getParameter("address");
+            String tel=request.getParameter("tel");
             String city_id=request.getParameter("city_id");
            
             //create session
@@ -66,7 +66,7 @@ public class create_session extends HttpServlet {
              session.setAttribute("lastname", lastname);
              session.setAttribute("email", email);
              session.setAttribute("password", password);
-             session.setAttribute("address", address);
+             session.setAttribute("tel", tel);
              session.setAttribute("city_id", city_id); 
               if (request.getParameter("rememberMe").equals("true")) {
                     Cookie emailCookie = new Cookie("email.resin.signin", email);

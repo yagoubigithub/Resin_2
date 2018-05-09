@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-all.min.css">
         <title>Resin</title>
         <style>
             .card{
@@ -26,11 +28,11 @@
         <%
             String firstname = "";
             String city = "";
-            String address = "";
+            String tel = "";
             try {
                 city = session.getAttribute("city_id").toString();
                 firstname = session.getAttribute("firstname").toString();
-                address = session.getAttribute("address").toString();
+                tel = session.getAttribute("tel").toString();
             } catch (Exception e) {
             }
         %>
@@ -52,28 +54,33 @@
 
                     </ul>
                 </div>
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            All
-                        </button>
-                        <div class="dropdown-menu" id="menu-categorie">
-                           ..........
+                <form>
+
+
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                All
+                            </button>
+                            <div class="dropdown-menu" id="menu-categorie">
+                                ..........
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-outline-success">Serch</button>
                         </div>
                     </div>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-outline-success">Serch</button>
-                    </div>
-                </div>
+                </form>
                 <div class="identity text-white">
-                    
-                        <button class="btn btn-outline-success ml-5" type="button" id="logout">Log Out</button>
-                    
+
+                    <button class="btn btn-outline-success ml-5" type="button" id="logout">Log Out</button>
+
 
                 </div>
             </div>
         </nav>
+        <br>
 
         <div class="jumbotron">
             <div class="container-fliud">
@@ -90,14 +97,34 @@
                             <div class="card-body">
                                 <p> <%=firstname%> </p> 
                                 <p> <%= city%> </p> 
-                                <p> <%= address%> </p> 
+                                <p> <%= tel%> </p> 
                             </div>
                         </div>
                     </div>
-                            <div class="col-sm" id="publication">
-                        <%@include  file="publication.jsp" %>
+                    <div class="col-sm" >
                         <br>
-                        <%@include  file="publication.jsp" %>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Create Pub</h4>
+                                <div class="form-group">
+                                    <form action="../FileUploadServlet1" id="upload-form" method="post" enctype="multipart/form-data">
+                                        <input class="form-control mb-2" id="nom_a" name="nom_a" placeholder="Nom de larticle ..">
+                                        <input class="form-control mb-2" id="prix" placeholder="Prix">
+                                        <input type="file" id="file_input" name="file" class="form-control mb-2" >
+
+                                        <textarea class="form-control" id="myTextarea" rows="3">Detail ..</textarea>
+                                </div>
+                                <button type="button" class="btn btn-info" id="post">Post</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div id="publication">
+                            <%@include  file="publication.jsp" %>
+                        </div>
+
+
 
                     </div>
 
@@ -109,10 +136,13 @@
         </div>
 
         <script src="../js/jquery.min.js"></script>
+        <script src="../js/jquery.form.js"></script>
         <script src="../js/tether.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/validation/logout.js"></script>
         <script src="../js/fechBD/fetch_categorie.js"></script>
-        <script src="../js/fechBD/fetch_publication.js"></script>
+        <!--<script src="../js/fechBD/fetch_publication.js"></script>-->
+        <script src="../js/Like_and_Comment/like.js"></script>
+        <script src="../js/PUBL/send_publication.js"></script>
     </body>
 </html>

@@ -17,7 +17,7 @@ $(document).ready(function () {
                     les_pub += '<div class="card"><div class="card-body"> <div class="row"><div class="col">\n\
 <img src="../images/avatar2.png" width="50" height="50"class="rounded-circle float-left user_image_pub">\n\
 <h6 class="user_name_pub"> ' + obj[i].firstname + ' '+obj[i].lastname+ ' </h6> </div></div><br> <div class="row"> <div class="col">\n\
- <p>'+obj[i].nom_article+'</p><strong><p>Prix : <mark>'+obj[i].prix+' DA</mark></p></strong>'+'<p>Tel : '+obj[i].taille+ '</p><button type="button" class=\n\
+ <p>'+obj[i].nom_article+'</p><strong><p>Prix : <mark>'+obj[i].prix+' DA</mark></p></strong>'+'<p>Tel : '+obj[i].tel+ '</p><button type="button" class=\n\
 "btn btn-link" data-toggle="collapse" data-target="#collapseDetail'+obj[i].id+'" aria-expanded="false" aria-controls="collapseDetail'+obj[i].id+'">detail</button><br>\n\
 <div class="collapse" id="collapseDetail'+obj[i].id+'"> <div class="card card-body">'+obj[i].description+'</div></div><br></div>  </div> <div class="row"> <div class="col"> \n\
 <img src="../images/' + obj[i].image + '" class="img-thumbnail">\n\

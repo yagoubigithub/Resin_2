@@ -15,16 +15,16 @@ public class User {
     private String lastname;
     private String email;
     private String password;
-    private String address;
+    private String tel;
      private int city_id;
 
-    public User(int id, String firstname, String lastname, String email, String password, String address, int city_id) {
+    public User(int id, String firstname, String lastname, String email, String password, String tel, int city_id) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
-        this.address = address;
+        this.tel = tel;
         this.city_id = city_id;
     }
 
@@ -48,8 +48,8 @@ public class User {
         this.password = password;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public int getId() {
@@ -72,8 +72,8 @@ public class User {
         return password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getTel() {
+        return tel;
     }
 
     public int getCity_id() {

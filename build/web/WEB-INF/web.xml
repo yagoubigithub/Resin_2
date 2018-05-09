@@ -20,6 +20,18 @@
         <servlet-name>signin_s</servlet-name>
         <servlet-class>Cookies_p.signin_s_cookies</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LIKE</servlet-name>
+        <servlet-class>LikeAndComment.LIKE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>FILES_.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FileUploadServlet1</servlet-name>
+        <servlet-class>Files_pa.FileUploadServlet1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -39,6 +51,16 @@
     <servlet-mapping>
         <servlet-name>signin_s</servlet-name>
         <url-pattern>/signin_s</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LIKE</servlet-name>
+        <url-pattern>/LIKE</url-pattern>
+    </servlet-mapping>
+   
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet1</servlet-name>
+        <url-pattern>/FileUploadServlet1</url-pattern>
+       
     </servlet-mapping>
     <session-config>
         <session-timeout>
