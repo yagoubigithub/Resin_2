@@ -36,7 +36,7 @@ public class siginup_s extends HttpServlet {
         DB.DBConnect db=new DBConnect();
           User user =db.SignUp(request.getParameter("firstname"), request.getParameter("lastname")
                   , request.getParameter("email"), request.getParameter("password"),
-                  request.getParameter("address"), request.getParameter("city"));
+                  request.getParameter("tel"), request.getParameter("city"));
         try (PrintWriter out = response.getWriter()) {
          out.println("{");
                out.println("\"id\" : "+user.getId()+",");

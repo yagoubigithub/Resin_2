@@ -32,7 +32,10 @@ $(document).ready(function() {
             processData: false,
             contentType: false
           }).done(function(data) {
-              alert("hala");
+               $.post('../AddPublication', {fetch: "categorie"},
+                function (data1) { 
+                    alert(data1);
+                    });
                file.val('');
           }).fail(function(jqXHR, textStatus) {
               //alert(jqXHR.responseText);

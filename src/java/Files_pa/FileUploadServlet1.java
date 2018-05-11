@@ -42,11 +42,12 @@ public class FileUploadServlet1 extends HttpServlet {
                  
          String Filename=extractFileName(part);
          
-         String savePath=File.separator + Filename;
-         
+         String savePath="..\\..\\..\\..\\..\\images\\"+File.separator + Filename;
+         out.println(savePath);
          File filesaveDir=new File(savePath);
+         
          part.write(savePath + File.separator);
-         out.println(part);
+         out.println(filesaveDir.getAbsolutePath());
         
             }catch(Exception e){
                 out.print(e+"hello world");

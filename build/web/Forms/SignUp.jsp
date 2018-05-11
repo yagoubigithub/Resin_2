@@ -40,7 +40,7 @@
                         </div>
                         <div class="row ">
                             <div class="col">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Address*" >
+                                <input type="text" class="form-control" id="tel" name="tel" placeholder="Tel..*" >
                                 <span class="error">error_description</span>
                             </div>
                         </div>

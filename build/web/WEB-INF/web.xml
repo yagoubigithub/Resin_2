@@ -32,6 +32,14 @@
         <servlet-name>FileUploadServlet1</servlet-name>
         <servlet-class>Files_pa.FileUploadServlet1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getVar</servlet-name>
+        <servlet-class>LikeAndComment.getVar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPublication</servlet-name>
+        <servlet-class>Files_pa.AddPublication</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -56,11 +64,17 @@
         <servlet-name>LIKE</servlet-name>
         <url-pattern>/LIKE</url-pattern>
     </servlet-mapping>
-   
     <servlet-mapping>
         <servlet-name>FileUploadServlet1</servlet-name>
         <url-pattern>/FileUploadServlet1</url-pattern>
-       
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getVar</servlet-name>
+        <url-pattern>/getVar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPublication</servlet-name>
+        <url-pattern>/AddPublication</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

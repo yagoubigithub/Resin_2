@@ -22,6 +22,12 @@
             .user_image_pub{
                 margin-right: 15px;
             }
+            .i1{
+                color:red;
+            }
+            .i0{
+                color:#111;
+            }
         </style>
     </head>
     <body>
@@ -29,10 +35,12 @@
             String firstname = "";
             String city = "";
             String tel = "";
+            String user_id="";
             try {
                 city = session.getAttribute("city_id").toString();
                 firstname = session.getAttribute("firstname").toString();
                 tel = session.getAttribute("tel").toString();
+                user_id = session.getAttribute("user_id").toString();
             } catch (Exception e) {
             }
         %>
@@ -141,7 +149,7 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/validation/logout.js"></script>
         <script src="../js/fechBD/fetch_categorie.js"></script>
-        <!--<script src="../js/fechBD/fetch_publication.js"></script>-->
+        <script src="../js/fechBD/fetch_publication.js"></script>
         <script src="../js/Like_and_Comment/like.js"></script>
         <script src="../js/PUBL/send_publication.js"></script>
     </body>

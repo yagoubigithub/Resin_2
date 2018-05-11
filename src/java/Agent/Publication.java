@@ -22,14 +22,26 @@ public class Publication {
     private double prix;
     private double promo;
     private String image;
-             private String tel
-            ;
+    private String tel;
+    private String ifLikeit;
+
+    public String getIfLikeit() {
+        return ifLikeit;
+    }
+
+    public void setIfLikeit(String ifLikeit) {
+        this.ifLikeit = ifLikeit;
+    }
+    
 
     public void setTel(String tel) {
         this.tel = tel;
     }
 
-    public Publication(int id, Date date, String description, String firstname, String lastname, String city, String nom_article, String categorie, String color, String taille, double prix, double promo, String image,String tel) {
+    public Publication(int id, Date date, String description, String firstname,
+            
+            String lastname, String city, String nom_article, String categorie,
+            String color, String taille, double prix, double promo, String image, String tel,String ifLikeit) {
         this.id = id;
         this.date = date;
         this.description = description;
@@ -43,7 +55,8 @@ public class Publication {
         this.prix = prix;
         this.promo = promo;
         this.image = image;
-        this.tel=tel;
+        this.tel = tel;
+        this.ifLikeit=ifLikeit;
     }
 
     public String getTel() {
@@ -153,6 +166,5 @@ public class Publication {
     public String getImage() {
         return image;
     }
-    
 
 }

@@ -10,7 +10,6 @@ $(document).ready(function () {
     $("#submit_signin").click(function () {
         var email = $("#email_signin").val();
         var password = $("#password_signin").val();
-
         $.post('siginin_s', {email: email, password: password},
                 function (data) {
                     r = data;

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 13 avr. 2018, 04:16:55
-    Author     : Yagoubi
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

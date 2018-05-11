@@ -72,18 +72,19 @@ function testInput() {
         errors_span[4].innerHTML = "Errors in the confirmation";
         b = false;
     }
+    var tel = Inputs[5].value;
     /********************************************************************************************/
-    var address = Inputs[5].value;
-    patt = new RegExp("\d+\s*.{1,}");
-    if (!patt.test(address)) {
+  /*  var tel = Inputs[5].value;
+    patt = new RegExp("\d+");
+    if (!patt.test(tel)) {
         errors_span[5].style.color = "red";
         errors_span[5].innerHTML = "Streeet address not valid";
         b = false;
     } else {
         errors_span[5].style.color = "green";
-        errors_span[5].innerHTML = "street address valid";
+        errors_span[5].innerHTML = "tel address valid";
         b = true;
-    }
+    }*/
     /********************************************************************************************************/
     var city = Inputs[6].value;
     if (city === "") {
@@ -105,14 +106,14 @@ $("#submit_signup").click(function () {
         var lastname = $("#lastname").val();
         var email = $("#email").val();
         var password = $("#password").val();
-        var address = $("#address").val();
+        var tel = $("#tel").val();
         var city = $("#city").val();
 
         $.post('siginup_s', {firstname: firstname, lastname: lastname
-            , email: email, password: password, address: address, city: city},
+            , email: email, password: password, tel: tel, city: city},
                 function (data) {
 
-                  
+                  alert(data);
                         obj = $.parseJSON(data);
                         if (obj.firstname === "exist") {
                             document.getElementsByClassName("error")[2].innerHTML = "this email is already exist";
@@ -121,8 +122,9 @@ $("#submit_signup").click(function () {
                             
                              $.post('create_session', {id:obj.id,firstname:obj.firstname,
                                 lastname:obj.lastname, email: obj.email, password: obj.password,
-                                address: obj.address, city_id: obj.city_id},
+                                tel: obj.tel, city_id: obj.city_id},
                 function (data) {
+                    
                     window.location.href = './Accueil/display.jsp';
                     
                 });

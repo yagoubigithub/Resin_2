@@ -19,7 +19,5 @@
     "url": "https://github.com/yagoubigithub/Resin_2/issues"
   },
   "homepage": "https://github.com/yagoubigithub/Resin_2#readme",
-  "dependencies": {
-    "rythm.js": "^2.2.3"
-  }
+  "dependencies": {}
 }

@@ -6,14 +6,12 @@
 package Form_p;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 /**
  *
@@ -33,42 +31,44 @@ public class create_session extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       HttpSession session = request.getSession();
-            /* TODO output your page here. You may use following sample code. */
-           String logout=null;
-            try {
-           logout=request.getParameter("logout");
+        HttpSession session = request.getSession();
+        /* TODO output your page here. You may use following sample code. */
+        String logout = null;
+        try {
+            logout = request.getParameter("logout");
 
         } catch (Exception e) {
+            logout = null;
         }
-            if( logout != null ){
-                 session.removeAttribute("user_id");
-             session.removeAttribute("firstname");
-             session.removeAttribute("lastname");
-             session.removeAttribute("email");
-             session.removeAttribute("password");
-             session.removeAttribute("tel");
-             session.removeAttribute("city_id"); 
-            }else{
-               String id=request.getParameter("id");
-            String firstname=request.getParameter("firstname");
-            String lastname=request.getParameter("lastname");
-            String email=request.getParameter("email");
-            String password=request.getParameter("password");
-            String tel=request.getParameter("tel");
-            String city_id=request.getParameter("city_id");
-           
+        if (logout != null) {
+            session.removeAttribute("user_id");
+            session.removeAttribute("firstname");
+            session.removeAttribute("lastname");
+            session.removeAttribute("email");
+            session.removeAttribute("password");
+            session.removeAttribute("tel");
+            session.removeAttribute("city_id");
+            logout = null;
+        } else {
+            String id = request.getParameter("id");
+            String firstname = request.getParameter("firstname");
+            String lastname = request.getParameter("lastname");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String tel = request.getParameter("tel");
+            String city_id = request.getParameter("city_id");
+            response.getWriter().println(tel);
+
             //create session
-            
-            
-             session.setAttribute("user_id", id);
-             session.setAttribute("firstname", firstname);
-             session.setAttribute("lastname", lastname);
-             session.setAttribute("email", email);
-             session.setAttribute("password", password);
-             session.setAttribute("tel", tel);
-             session.setAttribute("city_id", city_id); 
-              if (request.getParameter("rememberMe").equals("true")) {
+            session.setAttribute("user_id", id);
+            session.setAttribute("firstname", firstname);
+            session.setAttribute("lastname", lastname);
+            session.setAttribute("email", email);
+            session.setAttribute("password", password);
+            session.setAttribute("tel", tel);
+            session.setAttribute("city_id", city_id);
+            try {
+                if (request.getParameter("rememberMe").equals("true")) {
                     Cookie emailCookie = new Cookie("email.resin.signin", email);
                     Cookie passwordCookie = new Cookie("password.resin.signin", password);
                     emailCookie.setMaxAge(60 * 60 * 24 * 30);
@@ -76,13 +76,12 @@ public class create_session extends HttpServlet {
                     response.addCookie(emailCookie);
                     response.addCookie(passwordCookie);
                 }
+            } catch (Exception e) {
+
             }
-            
-             
-                
-        
-            
-        
+
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

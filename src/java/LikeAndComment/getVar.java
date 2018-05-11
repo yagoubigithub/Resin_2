@@ -3,26 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Publications;
+package LikeAndComment;
 
-import Agent.Publication;
-import DB.DBConnect;
-import DB.PUBLICATION_DB;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Yagoubi
  */
-@WebServlet(name = "fetchPublication", urlPatterns = {"/fetchPublication"})
-public class fetchPublication extends HttpServlet {
+public class getVar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,44 +32,15 @@ public class fetchPublication extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           DB.PUBLICATION_DB db = new PUBLICATION_DB();
-            ArrayList<Publication> publications = db.SelectPublication(request.getParameter("user_id"));
-            if (publications != null) {
-               out.println("[");
-                for (int i = 0; i < publications.size(); i++) {
-                    Publication publication = publications.get(i);
-                    if(publication != null){
-                        out.println("{");
-                    out.println("\"id\" : " + publication.getId() + ",");
-                    out.println("\"date\" : \"" + publication.getDate() + "\",");
-                    
-                    out.println("\"firstname\" : \"" + publication.getFirstname() + "\",");
-                    out.println("\"lastname\" : \"" + publication.getLastname() + "\",");
-                    out.println("\"nom_article\" : \"" + publication.getNom_article() + "\",");
-                    out.println("\"categorie\" : \"" + publication.getCategorie() + "\",");
-                    out.println("\"color\" : \"" + publication.getColor() + "\",");
-                    out.println("\"taille\" : \"" + publication.getTaille() + "\" ,");
-                    out.println("\"description\" : \"" + publication.getDescription() + "\",");
-                    out.println("\"prix\" : " + publication.getPrix() + " ,");
-                    out.println("\"promo\" : " + publication.getPromo() + " ,");
-                    out.println("\"image\" : \"" + publication.getImage() + "\",");
-                     out.println("\"tel\" : \"" + publication.getTel() + "\",");
-                     out.println("\"ifLikeit\" : \"" + publication.getIfLikeit() + "\"");
-                    out.println("}");
-                    if(i < publications.size()-1){
-                        out.print(",");
-                    }
-                    }
-                     
-                }
-                 out.println("]");
-
-            } else {
-                out.print("publications is null");
+            /* TODO output your page here. You may use following sample code. */
+            String var =request.getParameter("vari");
+            HttpSession session = request.getSession();
+            if(var.equals("user_id")){
+                out.println("{");
+                out.println("\"user_id\" :"+session.getAttribute("user_id"));
+                out.println("}");
             }
-           
-          
-
+            
         }
     }
 
